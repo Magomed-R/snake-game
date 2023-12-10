@@ -80,18 +80,15 @@ let interval = setInterval(function run() {
 }, 200);
 
 document.addEventListener("keydown", function (event) {
-    if (
-        canChangeVector &&
-        !(vector == "ArrowUp" && event.key == "ArrowDown") &&
-        !(vector == "ArrowDown" && event.key == "ArrowUp") &&
-        !(vector == "ArrowRight" && event.key == "ArrowLeft") &&
-        !(vector == "ArrowLeft" && event.key == "ArrowRight") &&
-        (vectorSides.includes(event.key))
-    ) {
-        vector = event.key;
-        canChangeVector = false;
-    }
+    arrowClickHadling(event.key)
 });
+
+let buttons = document.querySelectorAll(".arrow")
+for (let button of buttons) {
+    button.addEventListener("click", function(event) {
+        arrowClickHadling(event.target.classList[1])
+    })
+}
 
 function render(fieldsNode, fieldsRowNode) {
     for (let i = 0; i < fieldsNode.length; i++) {
@@ -113,6 +110,21 @@ function createApple(fieldsNode) {
     let x = randomInteger(0, 14);
     let y = randomInteger(0, 16);
     if (fieldsNode[x][y] === 0) fieldsNode[x][y] = 2;
+    else createApple(fieldsNode)
+}
+
+function arrowClickHadling(key) {
+    if (
+        canChangeVector &&
+        !(vector == "ArrowUp" && key == "ArrowDown") &&
+        !(vector == "ArrowDown" && key == "ArrowUp") &&
+        !(vector == "ArrowRight" && key == "ArrowLeft") &&
+        !(vector == "ArrowLeft" && key == "ArrowRight") &&
+        (vectorSides.includes(key))
+    ) {
+        vector = key;
+        canChangeVector = false;
+    }
 }
 
 function randomInteger(min, max) {

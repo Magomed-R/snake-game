@@ -6,6 +6,42 @@ body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+body .wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+}
+body .wrapper .arrows__container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+body .wrapper .arrows__container .buttons__row {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+body .wrapper .arrows__container .buttons__row .arrow {
+  width: 50px;
+  height: 40px;
+  background-color: #4b82ce;
+  box-shadow: 0 4px #3657ff;
+  border: 0;
+  border-radius: 10px;
+  margin: 0;
+  padding: 0;
+}
+body .wrapper .arrows__container .buttons__row .arrow:active {
+  box-shadow: 0 0;
+}
+@media (min-width: 800px) {
+  body .wrapper .arrows__container {
+    display: none;
+  }
 }
 body .wrapper .fields__container {
   display: flex;
@@ -21,6 +57,12 @@ body .wrapper .fields__container .fields__row .field {
   width: 25px;
   height: 25px;
   border-radius: 3px;
+}
+@media (max-width: 500px) {
+  body .wrapper .fields__container .fields__row .field {
+    width: 15px;
+    height: 15px;
+  }
 }
 body .wrapper .fields__container .fields__row .empty {
   background-color: grey;
