@@ -1,0 +1,33 @@
+body {
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+body .wrapper .fields__container {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+body .wrapper .fields__container .fields__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1px;
+}
+body .wrapper .fields__container .fields__row .field {
+  width: 25px;
+  height: 25px;
+  border-radius: 3px;
+}
+body .wrapper .fields__container .fields__row .empty {
+  background-color: grey;
+}
+body .wrapper .fields__container .fields__row .apple {
+  background-color: red;
+}
+body .wrapper .fields__container .fields__row .zmeika {
+  background-color: yellow;
+}/*# sourceMappingURL=index.css.map */
