@@ -1,5 +1,13 @@
 const fieldsContainer = document.querySelector(".fields__container");
 
+if (!localStorage.bestScore) localStorage.bestScore = 0
+
+const currentScore = document.querySelectorAll(".score__result")[0]
+const bestScore = document.querySelectorAll(".score__result")[1]
+
+let score = 0
+bestScore.innerText = localStorage.bestScore
+
 let canChangeVector = true;
 let vector = "ArrowRight";
 let fields = [...Array(15)].map((el, i) => (el = [...Array(17)].map((el, j) => (el = 0))));
@@ -35,6 +43,7 @@ let interval = setInterval(function run() {
             if (head?.y > 0 && fields[head.y - 1][head.x] !== 1) {
                 if (fields[head.y - 1][head.x] === 2) {
                     createApple(fields);
+                    score++
                 } else history.shift()
                 fields[--head.y][head.x] = 1;
             } else {
@@ -46,6 +55,7 @@ let interval = setInterval(function run() {
             if (head.x < 16 && fields[head.y][head.x + 1] !== 1) {
                 if (fields[head.y][head.x + 1] === 2) {
                     createApple(fields);
+                    score++
                 } else history.shift()
                 fields[head.y][++head.x] = 1;
             } else {
@@ -57,6 +67,7 @@ let interval = setInterval(function run() {
             if (head.y < 14 && fields[head.y + 1][head.x] !== 1) {
                 if (fields[head.y + 1][head.x] === 2) {
                     createApple(fields);
+                    score++
                 } else history.shift()
                 fields[++head.y][head.x] = 1;
             } else {
@@ -68,6 +79,7 @@ let interval = setInterval(function run() {
             if (head.x > 0 && fields[head.y][head.x - 1] !== 1) {
                 if (fields[head.y][head.x - 1] === 2) {
                     createApple(fields);
+                    score++
                 } else history.shift()
                 fields[head.y][--head.x] = 1;
             } else {
@@ -80,6 +92,12 @@ let interval = setInterval(function run() {
     history.push({ x: head.x, y: head.y });
 
     canChangeVector = true;
+
+    currentScore.innerText = score
+    if (score > localStorage.bestScore) {
+        localStorage.bestScore = score
+        bestScore.innerText = score
+    }
 
     render(fields, fieldsRow);
 }, 220);
@@ -121,8 +139,7 @@ function createApple(fieldsNode) {
 function arrowClickHadling(key) {
     if (key == "restart") {
         window.location.reload()
-    }
-    if (
+    } else if (
         canChangeVector &&
         !(vector == "ArrowUp" && key == "ArrowDown") &&
         !(vector == "ArrowDown" && key == "ArrowUp") &&

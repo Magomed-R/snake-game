@@ -18,6 +18,20 @@ body .wrapper {
   align-items: center;
   gap: 30px;
 }
+body .wrapper .score__container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  width: 100%;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+body .wrapper .score__container .score__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 1;
+}
 body .wrapper .arrows__container {
   width: 230px;
   height: 200px;
@@ -78,10 +92,10 @@ body .wrapper .fields__container .fields__row .field {
   height: 30px;
   border-radius: 3px;
 }
-@media (max-width: 500px) {
+@media (max-width: 550px) {
   body .wrapper .fields__container .fields__row .field {
-    max-width: 20px;
-    max-height: 20px;
+    width: calc((100vw - 30px) / 17);
+    height: calc((100vw - 30px) / 17);
   }
 }
 body .wrapper .fields__container .fields__row .empty {
