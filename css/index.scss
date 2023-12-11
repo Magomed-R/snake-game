@@ -13,39 +13,61 @@ body {
     margin: 0;
     padding: 0;
 
+    user-select: none;
+
     .wrapper {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 50px;
+        gap: 30px;
 
         .arrows__container {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
+            width: 230px;
+            height: 200px;
 
-            .buttons__row {
-                display: flex;
-                justify-content: center;
-                gap: 6px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+            gap: 10px;
 
-                .arrow {
-                    width: 50px;
-                    height: 40px;
-                    
-                    background-color: #4b82ce;
-                    box-shadow: 0 4px #3657ff;
+            .arrow {
+                background-color: #4b82ce;
+                box-shadow: 0 4px #3657ff;
 
-                    border: 0;
-                    border-radius: 10px;
+                border: 0;
+                border-radius: 10px;
 
-                    margin: 0;
-                    padding: 0;
+                margin: 0;
+                padding: 0;
 
-                    &:active {
-                        box-shadow: 0 0;
-                    }
+                font-size: 30px;
+
+                &:active {
+                    box-shadow: 0 0;
                 }
+
+                &:focus {
+                    outline: 0;
+                }
+            }
+
+            .ArrowUp {
+                grid-column-start: 2;
+            }
+            .ArrowLeft {
+                grid-column-start: 1;
+                grid-row-start: 2;
+            }
+            .ArrowRight {
+                grid-column-start: 3;
+                grid-row-start: 2;
+            }
+            .ArrowDown {
+                grid-column-start: 2;
+                grid-row-start: 3;
+            }
+            .restart {
+                display: none;
             }
         }
 
@@ -62,31 +84,30 @@ body {
 
             .fields__row {
                 display: flex;
-                flex-wrap: wrap;
                 gap: 1px;
 
                 .field {
-                    width: 25px;
-                    height: 25px;
-                    
+                    width: 30px;
+                    height: 30px;
+
                     border-radius: 3px;
                 }
 
                 @media (max-width: 500px) {
                     .field {
-                        width: 15px;
-                        height: 15px;
+                        max-width: 20px;
+                        max-height: 20px;
                     }
                 }
-                
+
                 .empty {
                     background-color: grey;
                 }
-                
+
                 .apple {
                     background-color: red;
                 }
-                
+
                 .zmeika {
                     background-color: yellow;
                 }

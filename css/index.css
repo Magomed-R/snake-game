@@ -8,35 +8,56 @@ body {
   overflow: hidden;
   margin: 0;
   padding: 0;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 body .wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 50px;
+  gap: 30px;
 }
 body .wrapper .arrows__container {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  width: 230px;
+  height: 200px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 10px;
 }
-body .wrapper .arrows__container .buttons__row {
-  display: flex;
-  justify-content: center;
-  gap: 6px;
-}
-body .wrapper .arrows__container .buttons__row .arrow {
-  width: 50px;
-  height: 40px;
+body .wrapper .arrows__container .arrow {
   background-color: #4b82ce;
   box-shadow: 0 4px #3657ff;
   border: 0;
   border-radius: 10px;
   margin: 0;
   padding: 0;
+  font-size: 30px;
 }
-body .wrapper .arrows__container .buttons__row .arrow:active {
+body .wrapper .arrows__container .arrow:active {
   box-shadow: 0 0;
+}
+body .wrapper .arrows__container .arrow:focus {
+  outline: 0;
+}
+body .wrapper .arrows__container .ArrowUp {
+  grid-column-start: 2;
+}
+body .wrapper .arrows__container .ArrowLeft {
+  grid-column-start: 1;
+  grid-row-start: 2;
+}
+body .wrapper .arrows__container .ArrowRight {
+  grid-column-start: 3;
+  grid-row-start: 2;
+}
+body .wrapper .arrows__container .ArrowDown {
+  grid-column-start: 2;
+  grid-row-start: 3;
+}
+body .wrapper .arrows__container .restart {
+  display: none;
 }
 @media (min-width: 800px) {
   body .wrapper .arrows__container {
@@ -50,18 +71,17 @@ body .wrapper .fields__container {
 }
 body .wrapper .fields__container .fields__row {
   display: flex;
-  flex-wrap: wrap;
   gap: 1px;
 }
 body .wrapper .fields__container .fields__row .field {
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
   border-radius: 3px;
 }
 @media (max-width: 500px) {
   body .wrapper .fields__container .fields__row .field {
-    width: 15px;
-    height: 15px;
+    max-width: 20px;
+    max-height: 20px;
   }
 }
 body .wrapper .fields__container .fields__row .empty {

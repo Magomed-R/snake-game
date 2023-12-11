@@ -23,6 +23,7 @@ for (let i = 0; i < fields.length; i++) {
 }
 
 const fieldsRow = document.querySelectorAll(".fields__row");
+const restartButton = document.querySelector(".restart")
 
 render(fields, fieldsRow);
 
@@ -38,6 +39,7 @@ let interval = setInterval(function run() {
                 fields[--head.y][head.x] = 1;
             } else {
                 clearInterval(interval);
+                restartButton.style.display = "block"
             }
             break;
         case "ArrowRight":
@@ -48,6 +50,7 @@ let interval = setInterval(function run() {
                 fields[head.y][++head.x] = 1;
             } else {
                 clearInterval(interval);
+                restartButton.style.display = "block"
             }
             break;
         case "ArrowDown":
@@ -58,6 +61,7 @@ let interval = setInterval(function run() {
                 fields[++head.y][head.x] = 1;
             } else {
                 clearInterval(interval);
+                restartButton.style.display = "block"
             }
             break;
         case "ArrowLeft":
@@ -68,6 +72,7 @@ let interval = setInterval(function run() {
                 fields[head.y][--head.x] = 1;
             } else {
                 clearInterval(interval);
+                restartButton.style.display = "block"
             }
             break;
     }
@@ -77,7 +82,7 @@ let interval = setInterval(function run() {
     canChangeVector = true;
 
     render(fields, fieldsRow);
-}, 200);
+}, 220);
 
 document.addEventListener("keydown", function (event) {
     arrowClickHadling(event.key)
@@ -114,6 +119,9 @@ function createApple(fieldsNode) {
 }
 
 function arrowClickHadling(key) {
+    if (key == "restart") {
+        window.location.reload()
+    }
     if (
         canChangeVector &&
         !(vector == "ArrowUp" && key == "ArrowDown") &&
@@ -124,7 +132,7 @@ function arrowClickHadling(key) {
     ) {
         vector = key;
         canChangeVector = false;
-    }
+    } 
 }
 
 function randomInteger(min, max) {
